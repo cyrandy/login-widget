@@ -1,0 +1,127 @@
+.login-widget
+    position: relative
+
+    margin: 0 auto
+    padding: 10px 20px
+
+    background: white
+    +border-radius(4px)
+
+    +at-breakpoint($desk-breakpoint)
+        max-width: 320px
+
+    .popup-header
+        padding-bottom: 10px
+
+    .center-loading .loading-img
+        position: absolute
+        top: 50%
+        left: 50%
+
+        margin-top: -25px
+        margin-left: -25px
+
+.login-btn
+    position: relative
+
+    display: block
+    width: 100%
+    padding: 10px 0
+    border: 0
+
+    color: white
+    text-align: center
+    font-size: $font-size-big
+
+    cursor: pointer
+    +text-shadow(0 1px 2px rgba(0, 0, 0, 0.1))
+    +appearance(none)
+    +border-radius(0)
+
+    & + .login-btn
+        margin-top: 10px
+
+    &:hover
+        color: white
+
+    &:active
+        top: 1px
+        outline: none
+        +box-shadow(none)
+
+    &.facebook
+        background: lighten($facebook-color, 5%)
+        border-bottom: 2px solid $facebook-color
+        +box-shadow(inset 0 -2px $facebook-color)
+
+    &.google
+        background: lighten($google-color, 5%)
+        border-bottom: 2px solid $google-color
+        +box-shadow(inset 0 -2px $google-color)
+
+    &.yahoo
+        background: lighten($yahoo-color, 5%)
+        border-bottom: 2px solid $yahoo-color
+        +box-shadow(inset 0 -2px $yahoo-color)
+
+    &.eztable
+        background: lighten($ez-red, 5%)
+        border-bottom: 2px solid $ez-red
+        +box-shadow(inset 0 -2px $ez-red)
+
+    .next-icon
+        margin-left: 5px
+
+.login-input + .login-input,
+    margin-top: 10px
+
+.signup-or-separator
+    background: none
+    height: 34px
+    margin: 3px 0
+    position: relative
+    text-align: center
+    color: $gray-light
+
+    .text
+        background-color: $content-bg
+        display: inline-block
+        margin: 0
+        padding: 8px
+
+    hr
+        height: 0
+        border: 0
+        margin: -16px auto 10px auto
+        width: 90%
+        border-top: 1px solid
+
+.email-signup-btn
+    border: 1px solid $ez-blue
+    padding: 10px 0
+
+    cursor: pointer
+
+    &:before
+        display: inline-block
+        padding: 0 5px
+
+        font-family: FontAwesome
+        content: "\f003"
+
+.email-signup-form
+    input
+        &.error
+            border-left: 2px solid $ez-red !important
+
+    .success-icon
+        &:before
+            content: "\f058"
+
+        font-family: 'FontAwesome'
+        font-size: 1em
+
+        display: inline-block
+        margin-left: 5px
+
+        color: #0AC92B

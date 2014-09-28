@@ -1,0 +1,144 @@
+#login-view.login-widget.gray-card.mfp-hide
+    .wrapper
+        //- | {assign var="next" value="`$server_domain.eztable`bind_reservation/?reservation_id=`$reservation.id`&checksum=`$reservation.checksum`&tel=`$reservation.tel`&next=`$server_domain.eztable`member/"}
+        input#next(type='hidden', value='{$next}')
+        .signup-container
+            .panel-body.header.text-centered
+                .signup-title.font-size-large.ez-blue
+                    //- !=i18n('login_widget.signup')
+                    | 註冊
+                p.signup-description
+            .panel-body
+
+                .login-btns
+                    .login-btn.facebook(data-login_by='facebook', data-type='signup')
+                        //- !=i18n('login_widget.signup.facebook')
+                        | facebook 註冊
+                    a.login-btn.google(href='{$config.path_prefix}control/login_by_google.php?next={$next|escape:\'url\'}', data-login_by='google', data-type='signup')
+                        //- !=i18n('login_widget.signup.google')
+                        | google 註冊
+                    a.login-btn.yahoo(href='{$config.path_prefix}control/login_by_yahoo.php?next={$next|escape:\'url\'}', data-login_by='yahoo', data-type='signup')
+                        //- !=i18n('login_widget.signup.yahoo')
+                        | yahoo 註冊
+                .signup-or-separator
+                    p.text
+                        //- !=i18n('login_widget.seperate.or')
+                        | 或
+                    hr
+
+                .text-centered
+                    .clickable-link.ez-blue.email-signup-btn
+                        //- !=i18n('login_widget.signup.email')
+                        | Email 註冊
+                form#email-signup.email-signup-form(style='display: none;', data-next='{$server_domain.eztable}member/')
+                    .form-row
+                        label.label
+                            //- !=i18n('general.name')
+                            | 姓名
+                        input#name(type='text', placeholder='王小明')
+                    .form-row
+                        label.label
+                            //- !=i18n('general.mail')
+                            | 電子信箱
+                        input#email(type='email', placeholder='mail@eztable.com')
+
+                    .form-row
+                        label.label
+                            //- !=i18n('general.phone')
+                            | 電話
+                        input#tel(type='tel', value='{$reservation.tel}')
+                    .form-row
+                        label.label
+                            //- !=i18n('general.password')
+                            | 密碼
+                            i.success-icon(style='display: none')
+                        input#password(type='password', placeholder='密碼')
+                    .form-row
+                        label.label
+                            //- !=i18n('general.confirm_password')
+                            | 確認密碼
+                            i.success-icon(style='display: none')
+                        input#confirm-password(type='password', placeholder='再次確認密碼')
+                    .form-row
+                        input.login-btn.eztable.login-input.submit-btn(type='submit', value='註冊', data-login_by='eztable-email', data-type='signup')
+                        //- include loading
+                    .form-row
+                        p.font-size-big.ez-red.error(style='display: none;')
+                            //- !=i18n('login_widget.signup.account_exist')
+                            | 抱歉，帳號已存在
+
+            .panel-body
+                p
+                    //- !=i18n('login_widget.signup.is_eztable_member')
+                    | 已經是EZTABLE會員？
+                    a.ez-blue.clickable-link.login-toggle
+                        //- !=i18n('login_widget.login')
+                        |  登入
+        .login-container(style='display: none')
+            .panel-body.header.text-centered
+                .login-title.font-size-large.ez-blue
+                    //- !=i18n('login_widget.login')
+                    | 登入
+                p.login-description
+            .panel-body
+                .login-btns
+                    .login-btn.facebook(data-login_by='facebook', data-type='login')
+                        //- !=i18n('login_widget.login.facebook')
+                        | 使用 facebook 登入
+                    a.login-btn.google(href='{$config.path_prefix}control/login_by_google.php?next={$next|escape:\'url\'}', data-login_by='google', data-type='login')
+                        //- !=i18n('login_widget.login.google')
+                        | 使用 Google 登入
+                    a.login-btn.yahoo(href='{$config.path_prefix}control/login_by_yahoo.php?next={$next|escape:\'url\'}', data-login_by='yahoo', data-type='login')
+                        //- !=i18n('login_widget.login.yahoo')
+                        | 使用 Yahoo 登入
+                .signup-or-separator
+                    p.text
+                        //- !=i18n('login_widget.seperate.or')
+                        | 或
+                    hr
+
+                .login-input-container
+                    form#email-login
+                        .form-row
+                            input.email.login-input(type='email', name='account')
+                        .form-row
+                            input.password.login-input(type='password', name='password')
+                        .form-row.login-input.text-right
+                            a.ez-blue.clickable-link.forget-password-btn
+                                | 忘記密碼？
+                                //- !=i18n('general.forget_password')
+                        .form-row
+                            input.login-btn.eztable.login-input.submit-btn(type='submit', value='登入', data-login_by='eztable-email', data-type='login')
+                            //- include loading
+                        .form-row
+                            p.font-size-big.ez-red.error(style='display: none;')
+                                //- !=i18n('login_widget.login.failed')
+                                | 很抱歉，登入失敗
+
+                .forget-password-container(style='display: none;')
+                    form#forget-password
+                        .form-row
+                            input.email.login-input(type='email', name='email')
+                        .form-row
+                            input.login-btn.eztable.login-input.submit-btn(type='submit', value='送出')
+                            //- include loading
+                            p.font-size-big.ez-blue.success(style='display: none;')
+                                //- !=i18n('login_widget.reset_password.success')
+                                | 密碼重設信已寄出，請至電子信箱收信並重設您的密碼
+                            p.font-size-big.ez-red.error(style='display: none;')
+                                //- !=i18n('login_widget.reset_password.error')
+                                | 您的帳號不存在哦
+                        .form-row.text-centered
+                            a.ez-blue.clickable-link.back-login-btn
+                                //- !=i18n('login_widget.reset_password.cancel')
+                                | 取消
+
+            .panel-body
+                p
+                    //- !=i18n('login_widget.login.not_eztable_member')
+                    | 還不是EZTABLE會員？
+                    a.ez-blue.clickable-link.login-toggle
+                        //- !=i18n('login_widget.signup')
+                        | 註冊
+    .center-loading
+        //- include loading
